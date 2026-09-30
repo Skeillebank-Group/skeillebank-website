@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skeillebank</title>
+<meta name="description" content="Skeillebank Ltd builds apps and fixes slow databases: EntryCode, ShiftSense and BokaPay, plus C# web and mobile development and SQL performance work.">
+<link rel="icon" href="logo.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: sticky wordmark header, hero with a query-plan panel, products as ruled rows, then two "work with us" paths, strengths, contact. */
+:root {
+  --bg: #f3f5f4;
+  --surface: #ffffff;
+  --fg: #0f2a33;
+  --muted: #55666c;
+  --line: #d3dbdb;
+  --accent: #1f6f78;
+  --accent-fg: #ffffff;
+  --slate: #2f5d73;
+  --good: #2a7a5b;
+  --bad: #b8382f;
+  --star: #f2a93b;
+  --font-display: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1a1f; --surface: #14262d; --fg: #e6ecec; --muted: #9db0b4; --line: #26404a;
+    --accent: #4fb3bf; --accent-fg: #0e1a1f; --slate: #7fb0c8; --good: #58c29a; --bad: #e8776b; --star: #f2b14f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1a1f; --surface: #14262d; --fg: #e6ecec; --muted: #9db0b4; --line: #26404a;
+  --accent: #4fb3bf; --accent-fg: #0e1a1f; --slate: #7fb0c8; --good: #58c29a; --bad: #e8776b; --star: #f2b14f;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  padding-inline: 20px;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1080px; margin-inline: auto; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.1; letter-spacing: -0.01em; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* header */
+.site-header {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  margin-inline: -20px;
+  padding-inline: 20px;
+}
+.site-header .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; padding-block: 14px; }
+.wordmark { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 22px; letter-spacing: -0.02em; text-decoration: none; }
+.wordmark i { color: var(--star); font-style: normal; }
+.wordmark img { height: 40px; width: auto; display: block; }
+.foot-brand { display: inline-flex; align-items: center; gap: 12px; }
+.foot-brand img { height: 44px; width: auto; display: block; }
+.nav { display: flex; flex-wrap: wrap; gap: 4px 22px; font-size: 15px; }
+.nav a { text-decoration: none; color: var(--muted); padding-block: 4px; }
+.nav a:hover { color: var(--fg); }
+
+/* hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 48px; align-items: center; padding-block: 72px 80px; }
+.hero h1 { font-size: clamp(38px, 6vw, 62px); font-weight: 700; }
+.hero p.lead { margin-top: 22px; font-size: 19px; color: var(--muted); max-width: 34em; }
+.hero .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.btn {
+  display: inline-block; text-decoration: none; font-weight: 600; font-size: 16px;
+  padding: 13px 22px; border-radius: 4px; border: 1.5px solid var(--fg);
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn.ghost:hover { background: var(--surface); }
+
+.plan { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; font-family: var(--font-mono); font-size: 13px; overflow: hidden; }
+.plan-head { display: flex; justify-content: space-between; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; }
+.plan pre { margin: 0; padding: 16px; overflow-x: auto; line-height: 1.7; color: var(--fg); }
+.plan .kw { color: var(--slate); font-weight: 500; }
+.plan .cm { color: var(--muted); }
+.run { padding: 14px 16px 16px; border-top: 1px solid var(--line); display: grid; gap: 14px; }
+.run-row { display: grid; gap: 6px; }
+.run-meta { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.run-meta b { font-weight: 500; }
+.run-meta .ms { font-variant-numeric: tabular-nums; }
+.bar { height: 10px; background: var(--bg); border-radius: 2px; overflow: hidden; }
+.bar i { display: block; height: 100%; }
+.bar.slow i { width: 100%; background: var(--bad); }
+.bar.fast i { width: 1.5%; min-width: 4px; background: var(--good); }
+.plan-note { padding: 10px 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11.5px; }
+
+/* sections */
+section { padding-block: 72px; border-top: 1px solid var(--line); scroll-margin-top: 70px; }
+.sec-head { display: grid; gap: 12px; margin-bottom: 40px; max-width: 40em; }
+.sec-head h2 { font-size: clamp(30px, 4.4vw, 42px); font-weight: 700; }
+.sec-head p { color: var(--muted); }
+
+/* products */
+.products { border-top: 1.5px solid var(--fg); }
+.product { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr) auto; gap: 8px 40px; padding-block: 28px; border-bottom: 1px solid var(--line); align-items: start; }
+.product h3 { font-size: 30px; font-weight: 700; }
+.product .tags { margin-top: 8px; }
+.product p { color: var(--muted); max-width: 36em; }
+.status { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; padding: 5px 10px; border: 1px solid var(--line); border-radius: 3px; color: var(--fg); justify-self: end; }
+.status.dev { border-color: var(--slate); color: var(--slate); }
+.product.later h3, .product.later p { opacity: 0.72; }
+.more { display: inline-block; margin-top: 10px; color: var(--accent); font-weight: 600; text-underline-offset: 3px; }
+.more:hover { text-decoration-thickness: 2px; }
+
+/* work with us */
+.paths { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.path { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 32px; display: grid; gap: 14px; align-content: start; }
+.path h3 { font-size: 26px; font-weight: 700; }
+.path p { color: var(--muted); }
+.path ul { margin: 4px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 16px; }
+.path li { padding-left: 20px; position: relative; }
+.path li::before { content: ""; position: absolute; left: 0; top: 0.7em; width: 10px; height: 2px; background: var(--accent); }
+.open-line { margin-top: 32px; font-size: 19px; max-width: 36em; }
+
+/* strengths */
+.strengths { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; }
+.strength { display: grid; gap: 10px; align-content: start; border-top: 1.5px solid var(--fg); padding-top: 18px; }
+.strength h3 { font-size: 24px; font-weight: 700; }
+.strength p { color: var(--muted); font-size: 16px; }
+.background-line { margin-top: 40px; color: var(--muted); max-width: 40em; }
+
+/* contact */
+.contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: center; }
+.contact-box { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 28px; display: grid; gap: 14px; }
+.email { font-family: var(--font-mono); font-size: 18px; overflow-wrap: anywhere; user-select: all; }
+.copy { font: inherit; font-weight: 600; font-size: 15px; background: var(--fg); color: var(--bg); border: 0; border-radius: 4px; padding: 10px 16px; cursor: pointer; justify-self: start; }
+.copy:hover { filter: brightness(1.15); }
+.hint { font-size: 14px; color: var(--muted); min-height: 1.4em; }
+
+footer { border-top: 1px solid var(--line); padding-block: 28px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; color: var(--muted); font-size: 14px; }
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr); padding-block: 44px 56px; gap: 36px; }
+  .product { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .status { justify-self: start; }
+  .paths, .contact { grid-template-columns: minmax(0, 1fr); }
+  .strengths { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  section { padding-block: 52px; }
+  .path { padding: 24px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="#top"><img src="logo.webp" alt="" width="38" height="40"><span class="wm">Skeillebank<i>.</i></span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#products">Products</a>
+      <a href="#work-with-us">Work with us</a>
+      <a href="#strengths">Strengths</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <div class="hero">
+    <div>
+      <p class="label">Skeillebank Ltd · App development studio</p>
+      <h1 style="margin-top:14px">We build apps, and we fix slow databases.</h1>
+      <p class="lead">Skeillebank makes its own products and builds software for other people. Our strengths are SQL performance and troubleshooting, and C# web and mobile apps.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#work-with-us">Bring us your idea</a>
+        <a class="btn ghost" href="#products">See our products</a>
+      </div>
+    </div>
+
+    <div class="plan" role="img" aria-label="Example of a slow query becoming a fast one after an index is added">
+      <div class="plan-head"><span>Query plan</span><span>Before / after</span></div>
+<pre><span class="kw">SELECT</span> o.OrderId, o.Total
+<span class="kw">FROM</span>   Orders o
+<span class="kw">WHERE</span>  o.CustomerId = @id
+  <span class="kw">AND</span>  o.Status = <span class="cm">'Open'</span>;</pre>
+      <div class="run">
+        <div class="run-row">
+          <div class="run-meta"><b>Clustered Index Scan</b><span class="ms">4,812 ms</span></div>
+          <div class="bar slow"><i></i></div>
+        </div>
+        <div class="run-row">
+          <div class="run-meta"><b>Index Seek</b><span class="ms">9 ms</span></div>
+          <div class="bar fast"><i></i></div>
+        </div>
+      </div>
+      <div class="plan-note">Illustrative example. One covering index on CustomerId and Status.</div>
+    </div>
+  </div>
+
+  <section id="products">
+    <div class="sec-head">
+      <p class="label">Our products</p>
+      <h2>Software we are building ourselves</h2>
+      <p>Each one solves a specific problem for a specific kind of business.</p>
+    </div>
+    <div class="products">
+      <article class="product">
+        <div>
+          <h3>EntryCode</h3>
+          <p class="label tags">Ticketing · Booking</p>
+        </div>
+        <p>QR ticketing and booking for lifestyle venues, promoters and event hosts. Guests book and receive a code. Staff scan it at the door. <a class="more" href="https://entrycode-dashboard-cdg2atb6ckesazd8.swedencentral-01.azurewebsites.net">Learn more about EntryCode →</a></p>
+        <span class="status dev">In development</span>
+      </article>
+      <article class="product">
+        <div>
+          <h3>ShiftSense</h3>
+          <p class="label tags">Staff scheduling</p>
+        </div>
+        <p>Rotas for restaurants and small businesses. ShiftSense forecasts how many people you need from the weather and local events, so the schedule fits the day you will actually have.</p>
+        <span class="status dev">In development</span>
+      </article>
+      <article class="product">
+        <div>
+          <h3>BokaPay</h3>
+          <p class="label tags">Retail payments</p>
+        </div>
+        <p>Cardless payments for shops over Open Banking. The customer scans a QR code and pays bank to bank. The shop sees the money straight away. Built for the UK and EU.</p>
+        <span class="status dev">In development</span>
+      </article>
+    </div>
+  </section>
+
+  <section id="work-with-us">
+    <div class="sec-head">
+      <p class="label">Work with us</p>
+      <h2>Got an idea? We are open to all of them.</h2>
+      <p>You do not need a finished spec. Tell us what you want to exist and we will work out how to build it.</p>
+    </div>
+    <div class="paths">
+      <div class="path">
+        <p class="label">Path one</p>
+        <h3>Hire us to build it</h3>
+        <p>You have the idea. We design and build the software and hand over something that works.</p>
+        <ul>
+          <li>Web apps and APIs in C#</li>
+          <li>Mobile apps</li>
+          <li>Database design and rescue work</li>
+        </ul>
+      </div>
+      <div class="path">
+        <p class="label">Path two</p>
+        <h3>Partner with us</h3>
+        <p>You have an idea and need a technical partner to make it real. We are willing to go into partnership on the right one.</p>
+        <ul>
+          <li>We build alongside you from the start</li>
+          <li>Terms are agreed case by case</li>
+          <li>Tell us about the idea and we will talk</li>
+        </ul>
+      </div>
+    </div>
+    <p class="open-line">Not sure which path fits? Send us the idea in a few sentences and we will reply with a straight answer.</p>
+  </section>
+
+  <section id="strengths">
+    <div class="sec-head">
+      <p class="label">What we are good at</p>
+      <h2>Three things we do well</h2>
+    </div>
+    <div class="strengths">
+      <div class="strength">
+        <h3>SQL performance and troubleshooting</h3>
+        <p>Slow queries, blocking, deadlocks, bad execution plans and indexes that cost more than they save. We find the cause and fix it.</p>
+      </div>
+      <div class="strength">
+        <h3>C# web applications</h3>
+        <p>Web apps and APIs that are straightforward to run and easy to change, with the database designed alongside the code.</p>
+      </div>
+      <div class="strength">
+        <h3>C# mobile apps</h3>
+        <p>Mobile apps built on the same C# skills as the backend, so one team can take a product from database to phone.</p>
+      </div>
+    </div>
+    <p class="background-line">Our experience comes from gaming, retail advertising and financial fund software.</p>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <div class="sec-head" style="margin-bottom:0">
+        <p class="label">Contact</p>
+        <h2>Tell us what you want to build</h2>
+        <p>A few sentences is enough. Say what the idea is, who it is for and where you are stuck.</p>
+      </div>
+      <div class="contact-box">
+        <p class="label">Email</p>
+        <p class="email"><a id="email" href="mailto:info@skeillebank.com">info@skeillebank.com</a></p>
+        <button class="copy" id="copy" type="button">Copy address</button>
+        <p class="hint" id="hint" role="status"></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="foot-brand"><img src="logo.webp" alt="" width="42" height="44">© 2026 Skeillebank Ltd</span>
+    <span>Registered in Northern Ireland, company number NI744153. Registered office: 8 Manse Road, Drumquin, BT78 4SD · <a href="https://entrycode-dashboard-cdg2atb6ckesazd8.swedencentral-01.azurewebsites.net/privacy">Privacy</a></span>
+  </footer>
+</main>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy');
+  var hint = document.getElementById('hint');
+  var email = document.getElementById('email');
+  btn.addEventListener('click', function () {
+    var text = email.textContent;
+    function fallback() {
+      var r = document.createRange();
+      r.selectNodeContents(email);
+      var s = window.getSelection();
+      s.removeAllRanges();
+      s.addRange(r);
+      hint.textContent = 'Address selected. Copy it with your keyboard.';
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () {
+        hint.textContent = 'Copied.';
+      }, fallback);
+    } catch (e) { fallback(); }
+  });
+})();
+</script>
+</body>
+</html>
