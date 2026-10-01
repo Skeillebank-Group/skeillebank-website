@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy · Skeillebank</title>
+<meta name="description" content="How the skeillebank.com website handles personal data: no cookies, no analytics, and what happens when you email us.">
+<link rel="icon" href="logo.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --bg: #f3f5f4;
+  --fg: #0f2a33;
+  --muted: #55666c;
+  --line: #d3dbdb;
+  --accent: #1f6f78;
+  --star: #f2a93b;
+  --font-display: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1a1f; --fg: #e6ecec; --muted: #9db0b4; --line: #26404a; --accent: #4fb3bf; --star: #f2b14f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1a1f; --fg: #e6ecec; --muted: #9db0b4; --line: #26404a; --accent: #4fb3bf; --star: #f2b14f;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  padding-inline: 20px;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 720px; margin-inline: auto; }
+h1, h2 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.15; letter-spacing: -0.01em; }
+p, ul { margin: 0; }
+a { color: var(--accent); text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.site-header { border-bottom: 1px solid var(--line); margin-inline: -20px; padding-inline: 20px; }
+.site-header .wrap { padding-block: 14px; }
+.wordmark { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 22px; letter-spacing: -0.02em; text-decoration: none; color: var(--fg); }
+.wordmark i { color: var(--star); font-style: normal; }
+.wordmark img { height: 40px; width: auto; display: block; }
+
+.label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.page-head { padding-block: 56px 32px; display: grid; gap: 14px; }
+.page-head h1 { font-size: clamp(34px, 5vw, 48px); font-weight: 700; }
+.page-head p.lead { font-size: 19px; color: var(--muted); }
+
+section { padding-block: 28px; border-top: 1px solid var(--line); display: grid; gap: 12px; }
+section h2 { font-size: 24px; font-weight: 700; }
+section ul { padding-left: 22px; display: grid; gap: 6px; }
+.muted { color: var(--muted); }
+
+footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="./"><img src="logo.webp" alt="" width="38" height="40"><span>Skeillebank<i>.</i></span></a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="page-head">
+    <p class="label">Privacy</p>
+    <h1>How this website handles your data</h1>
+    <p class="lead">Short version: this website doesn't use cookies, analytics or tracking, and has no forms. If you email us, we use your message to reply.</p>
+    <p class="muted">Last updated 1 October 2026</p>
+  </div>
+
+  <section>
+    <h2>Who we are</h2>
+    <p>This website is run by Skeillebank Ltd, registered in Northern Ireland, company number NI744153. Registered office: 8 Manse Road, Drumquin, BT78 4SD. We are the data controller for the personal data described here.</p>
+    <p>Contact: <a href="mailto:info@skeillebank.com">info@skeillebank.com</a></p>
+  </section>
+
+  <section>
+    <h2>What this notice covers</h2>
+    <p>This notice covers the skeillebank.com website and emails you send us. Our products, such as EntryCode, have their own privacy notices that apply when you use them.</p>
+  </section>
+
+  <section>
+    <h2>Visiting the website</h2>
+    <p>We don't set cookies, run analytics or tracking, or collect anything through forms. Two outside services are involved when you load a page:</p>
+    <ul>
+      <li><strong>GitHub Pages</strong> hosts the website. Like any web host, GitHub receives your IP address and browser details when you load a page, and may keep them in its logs for security. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>.</li>
+      <li><strong>Google Fonts</strong> supplies the fonts. Your browser downloads them from Google's servers, which means Google receives your IP address. See <a href="https://policies.google.com/privacy">Google's privacy policy</a>.</li>
+    </ul>
+    <p>We don't receive or see this data ourselves.</p>
+  </section>
+
+  <section>
+    <h2>Emailing us</h2>
+    <p>If you email us, we receive your email address, your name if you include it, and whatever you write. We use it only to reply to you and, if we end up working together, to run that work. Our legal basis is our legitimate interest in answering enquiries, or taking steps towards a contract you've asked about.</p>
+    <p>Our email is hosted by Google Workspace. We keep emails as long as we need them for your enquiry and any work that follows, and then delete them. We don't sell your data or use it for marketing.</p>
+  </section>
+
+  <section>
+    <h2>Your rights</h2>
+    <p>You can ask us for a copy of the data we hold about you, and ask us to correct or delete it, or to stop using it. Email <a href="mailto:info@skeillebank.com">info@skeillebank.com</a>.</p>
+    <p>If you're unhappy with how we've handled your data, you can complain to the Information Commissioner's Office at <a href="https://ico.org.uk/make-a-complaint/">ico.org.uk</a>.</p>
+  </section>
+
+  <footer>
+    © 2026 Skeillebank Ltd · Registered in Northern Ireland, company number NI744153. Registered office: 8 Manse Road, Drumquin, BT78 4SD · <a href="./">Home</a>
+  </footer>
+</main>
+
+</body>
+</html>
