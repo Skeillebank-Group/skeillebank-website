@@ -147,7 +147,20 @@ section { padding-block: 72px; border-top: 1px solid var(--line); scroll-margin-
 .strength { display: grid; gap: 10px; align-content: start; border-top: 1.5px solid var(--fg); padding-top: 18px; }
 .strength h3 { font-size: 24px; font-weight: 700; }
 .strength p { color: var(--muted); font-size: 16px; }
-.background-line { margin-top: 40px; color: var(--muted); max-width: 40em; }
+
+/* about */
+.about { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+.about-bio { display: grid; gap: 16px; max-width: 36em; }
+.about-bio p:not(:first-child) { color: var(--muted); }
+.about-facts { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 28px; }
+.facts { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; font-size: 16px; }
+.facts li { padding-left: 20px; position: relative; }
+.facts li::before { content: ""; position: absolute; left: 0; top: 0.7em; width: 10px; height: 2px; background: var(--accent); }
+.stack { margin: 12px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+.stack li { font-family: var(--font-mono); font-size: 13px; padding: 4px 10px; border: 1px solid var(--line); border-radius: 3px; }
+.name-note { margin-top: 8px; padding-top: 16px; border-top: 1px solid var(--line); display: grid; gap: 6px; }
+.about-bio .name-note p:not(.label) { color: var(--fg); }
+.about-bio .name-note p:last-child { color: var(--muted); }
 
 /* contact */
 .contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: center; }
@@ -163,7 +176,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; display: f
   .hero { grid-template-columns: minmax(0, 1fr); padding-block: 44px 56px; gap: 36px; }
   .product { grid-template-columns: minmax(0, 1fr); gap: 10px; }
   .status { justify-self: start; }
-  .paths, .contact { grid-template-columns: minmax(0, 1fr); }
+  .paths, .contact, .about { grid-template-columns: minmax(0, 1fr); }
   .strengths { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   section { padding-block: 52px; }
   .path { padding: 24px; }
@@ -180,6 +193,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; display: f
       <a href="#products">Products</a>
       <a href="#work-with-us">Work with us</a>
       <a href="#strengths">Strengths</a>
+      <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -301,7 +315,38 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; display: f
         <p>Mobile apps built on the same C# skills as the backend, so one team can take a product from database to phone.</p>
       </div>
     </div>
-    <p class="background-line">Our experience comes from gaming, retail advertising and financial fund software.</p>
+  </section>
+
+  <section id="about">
+    <div class="sec-head">
+      <p class="label">Who is behind Skeillebank</p>
+      <h2>Ivar Myrum Hagen, founder</h2>
+    </div>
+    <div class="about">
+      <div class="about-bio">
+        <p>Skeillebank is run by Ivar Myrum Hagen, a database and .NET developer with more than 20 years of experience building and tuning SQL Server systems for fund administration, retail marketing and gaming.</p>
+        <p>That work has meant making slow systems fast, moving data safely between systems that were never meant to talk to each other, and turning old code into something a team can keep working on. EntryCode, ShiftSense and BokaPay are built on the same foundations: C#, .NET and SQL Server, on Azure.</p>
+        <p>Ivar trained as an engineer (BEng in Automation, Kongsberg College of Engineering) and is a certified Professional Scrum Master.</p>
+        <div class="name-note">
+          <p class="label">Why “Skeillebank”?</p>
+          <p>In the dialect of Vågå, in Norway's Gudbrandsdalen valley where Ivar is from, a <i>skeillebank</i> is a headache. A slow database or a tangled system gives you one. Our job is to make it go away.</p>
+          <p>The logo started life as a dinosaur eating the star off the Christmas tree. These days we like to think it's eating headaches.</p>
+        </div>
+      </div>
+      <div class="about-facts">
+        <p class="label">Track record</p>
+        <ul class="facts">
+          <li>Merged the data of two large UK bookmakers into one reporting layer during their merger</li>
+          <li>Profiled production databases with Extended Events to find exactly where time was being lost</li>
+          <li>Moved a company's database from IBM DB2 to SQL Server, and old classic ASP code to modern .NET</li>
+          <li>Built automated data pipelines and monitoring that flag a failed job or out-of-range data before anyone else notices</li>
+        </ul>
+        <p class="label" style="margin-top:22px">Tools</p>
+        <ul class="stack" aria-label="Tools">
+          <li>SQL Server</li><li>T-SQL</li><li>SSIS</li><li>SSRS</li><li>C#</li><li>.NET</li><li>Blazor</li><li>.NET MAUI</li><li>Azure</li><li>PowerShell</li><li>tSQLt</li><li>Git</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <section id="contact">
