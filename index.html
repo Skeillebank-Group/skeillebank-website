@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Skeillebank</title>
-<meta name="description" content="Skeillebank Ltd builds apps and fixes slow databases: EntryCode, ShiftSense and BokaPay, plus C# web and mobile development and SQL performance work.">
+<meta name="description" content="Skeillebank Ltd fixes business headaches: slow systems, spreadsheets that run the business, and software you pay too much for. Book a free 30-minute call. Makers of EntryCode, ShiftSense and BokaPay.">
 <link rel="icon" href="logo.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -149,6 +149,39 @@ section { padding-block: 72px; border-top: 1px solid var(--line); scroll-margin-
 .strength h3 { font-size: 24px; font-weight: 700; }
 .strength p { color: var(--muted); font-size: 16px; }
 
+/* diagnosis card (hero) */
+.diag-list { margin: 0; padding: 16px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px 18px; font-size: 13px; line-height: 1.55; }
+.diag-list dt { color: var(--muted); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; padding-top: 1px; }
+.diag-list dd { margin: 0; color: var(--fg); }
+.diag-list dd.good { color: var(--good); font-weight: 500; }
+
+/* headaches */
+.symptoms { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.symptom { background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--star); border-radius: 6px; padding: 22px; display: grid; gap: 8px; align-content: start; }
+.symptom h3 { font-size: 20px; font-weight: 700; }
+.symptom p { color: var(--muted); font-size: 15.5px; }
+
+/* how it works */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; counter-reset: step; }
+.steps li { counter-increment: step; border-top: 1.5px solid var(--fg); padding-top: 18px; display: grid; gap: 10px; align-content: start; }
+.steps li::before { content: counter(step); font-family: var(--font-display); font-weight: 700; font-size: 40px; line-height: 1; color: var(--accent); }
+.steps h3 { font-size: 22px; font-weight: 700; }
+.steps p { color: var(--muted); font-size: 16px; }
+
+/* treated (products) */
+.cure { display: grid; gap: 8px; }
+.cure p { color: var(--muted); max-width: 36em; }
+.cure-label { display: inline-block; min-width: 86px; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg); }
+
+/* got an idea instead */
+.idea-band { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: start; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 32px; }
+.idea-band h2 { font-size: clamp(24px, 3.2vw, 30px); font-weight: 700; margin-top: 10px; }
+.idea-text { display: grid; gap: 12px; color: var(--muted); }
+
+/* contact call button */
+.call-btn { justify-self: start; }
+.hint-line { font-size: 14px; color: var(--muted); }
+
 /* about */
 .about { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 40px; align-items: start; }
 .about-bio { display: grid; gap: 16px; max-width: 36em; }
@@ -191,11 +224,15 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; display: f
   .hero { grid-template-columns: minmax(0, 1fr); padding-block: 44px 56px; gap: 36px; }
   .product { grid-template-columns: minmax(0, 1fr); gap: 10px; }
   .status { justify-self: start; }
-  .paths, .contact, .about { grid-template-columns: minmax(0, 1fr); }
+  .paths, .contact, .about, .idea-band { grid-template-columns: minmax(0, 1fr); }
+  .symptoms { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .steps { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .idea-band { padding: 24px; gap: 16px; }
   .strengths { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   section { padding-block: 52px; }
   .path { padding: 24px; }
 }
+@media (max-width: 560px) { .symptoms { grid-template-columns: minmax(0, 1fr); } .diag-list { grid-template-columns: minmax(0, 1fr); gap: 2px; } .diag-list dd { margin-bottom: 8px; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
 </head>
@@ -205,9 +242,9 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; display: f
   <div class="wrap">
     <a class="wordmark" href="#top"><img src="logo.webp" alt="" width="38" height="40"><span class="wm">Skeillebank<i>.</i></span></a>
     <nav class="nav" aria-label="Main">
-      <a href="#products">Products</a>
-      <a href="#work-with-us">Work with us</a>
-      <a href="#strengths">Strengths</a>
+      <a href="#headaches">Headaches</a>
+      <a href="#how">How it works</a>
+      <a href="#treated">Treated</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -217,48 +254,102 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; display: f
 <main class="wrap" id="top">
   <div class="hero">
     <div>
-      <p class="label">Skeillebank Ltd · App development studio</p>
-      <h1 style="margin-top:14px">We build apps, and we fix slow databases.</h1>
-      <p class="lead">Skeillebank makes its own products and builds software for other people. Our strengths are SQL performance and troubleshooting, and C# web and mobile apps.</p>
+      <p class="label">Skeillebank Ltd · We fix business headaches</p>
+      <h1 style="margin-top:14px">What's giving your business a headache?</h1>
+      <p class="lead">Slow systems, spreadsheets that run the business, software you pay for but only half use. Tell us what isn't running as well as it could, and we'll give you a straight answer on how to fix it, and whether you're paying more than you need to.</p>
       <div class="cta-row">
-        <a class="btn primary" href="#work-with-us">Bring us your idea</a>
-        <a class="btn ghost" href="#products">See our products</a>
+        <a class="btn primary" href="mailto:info@skeillebank.com?subject=Free%2030-minute%20call">Book a free 30-minute call</a>
+        <a class="btn ghost" href="#contact">Or email us</a>
       </div>
     </div>
 
-    <div class="plan" role="img" aria-label="Example of a slow query becoming a fast one after an index is added">
-      <div class="plan-head"><span>Query plan</span><span>Before / after</span></div>
-<pre><span class="kw">SELECT</span> o.OrderId, o.Total
-<span class="kw">FROM</span>   Orders o
-<span class="kw">WHERE</span>  o.CustomerId = @id
-  <span class="kw">AND</span>  o.Status = <span class="cm">'Open'</span>;</pre>
-      <div class="run">
-        <div class="run-row">
-          <div class="run-meta"><b>Clustered Index Scan</b><span class="ms">4,812 ms</span></div>
-          <div class="bar slow"><i></i></div>
-        </div>
-        <div class="run-row">
-          <div class="run-meta"><b>Index Seek</b><span class="ms">9 ms</span></div>
-          <div class="bar fast"><i></i></div>
-        </div>
-      </div>
-      <div class="plan-note">Illustrative example. One covering index on CustomerId and Status.</div>
+    <div class="plan diag" role="img" aria-label="An illustrative diagnosis: a slow month-end report and orders typed into three systems, fixed with one index and one small sync job">
+      <div class="plan-head"><span>Diagnosis</span><span>Example</span></div>
+      <dl class="diag-list">
+        <dt>Symptoms</dt>
+        <dd>Month-end report takes 3 hours.<br>The same orders are typed into three systems.</dd>
+        <dt>Diagnosis</dt>
+        <dd>One missing index. Systems that don't talk to each other.</dd>
+        <dt>Treatment</dt>
+        <dd>Add the index. One small job that copies orders across.</dd>
+        <dt>Result</dt>
+        <dd class="good">Report in 2 minutes. Orders typed once.</dd>
+      </dl>
+      <div class="plan-note">Illustrative example.</div>
     </div>
   </div>
 
-  <section id="products">
+  <section id="headaches">
     <div class="sec-head">
-      <p class="label">Our products</p>
-      <h2>Software we are building ourselves</h2>
-      <p>Each one solves a specific problem for a specific kind of business.</p>
+      <p class="label">Common headaches</p>
+      <h2>Sound familiar?</h2>
+      <p>These are the kinds of problems we fix. Most don't need expensive new software.</p>
+    </div>
+    <div class="symptoms">
+      <div class="symptom">
+        <h3>“Reports take all morning.”</h3>
+        <p>Usually a slow database, not slow people. Often fixed without changing anything your team uses.</p>
+      </div>
+      <div class="symptom">
+        <h3>“The system crawls every month-end.”</h3>
+        <p>We find the bottleneck, whether that's queries, indexes or jobs blocking each other, and remove it.</p>
+      </div>
+      <div class="symptom">
+        <h3>“We pay for tools that don't talk to each other.”</h3>
+        <p>Connect them so data is entered once, or replace several with one that actually fits.</p>
+      </div>
+      <div class="symptom">
+        <h3>“Only one person understands the spreadsheet.”</h3>
+        <p>Turn it into a simple app the whole team can use, that doesn't break when someone sorts the wrong column.</p>
+      </div>
+      <div class="symptom">
+        <h3>“Card fees eat into every sale.”</h3>
+        <p>Bank-to-bank payments by QR code can cost less than cards for many small businesses.</p>
+      </div>
+      <div class="symptom">
+        <h3>“Are we overpaying for software?”</h3>
+        <p>We look at what you pay for and what you actually use, and tell you honestly what you could drop.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="sec-head">
+      <p class="label">How it works</p>
+      <h2>From headache to a straight answer</h2>
+    </div>
+    <ol class="steps">
+      <li>
+        <h3>Tell us the headache</h3>
+        <p>Book a free 30-minute call, or email a few sentences. No technical words needed.</p>
+      </li>
+      <li>
+        <h3>We take a look</h3>
+        <p>We ask questions and look at what you use today, and where the time or money goes.</p>
+      </li>
+      <li>
+        <h3>You get a straight answer</h3>
+        <p>Fix what you have, build something small, switch to something cheaper, or leave it alone. If it isn't worth doing, we'll say so.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="treated">
+    <div class="sec-head">
+      <p class="label">Headaches we've already treated</p>
+      <h2>Our own products started as headaches</h2>
+      <p>Each one fixes a specific problem for a specific kind of business. They show the kind of fix we build.</p>
     </div>
     <div class="products">
       <article class="product">
         <div>
           <h3>EntryCode</h3>
-          <p class="label tags">Ticketing · Booking</p>
+          <p class="label tags">Ticketing · Door entry</p>
         </div>
-        <p>QR ticketing and booking for lifestyle venues, promoters and event hosts. Guests book and receive a code. Staff scan it at the door. <a class="more" href="https://entrycode.uk">Learn more about EntryCode →</a></p>
+        <div class="cure">
+          <p><span class="cure-label">Headache</span> Screenshotted tickets, queues when the wifi drops, and fees on every ticket sold.</p>
+          <p><span class="cure-label">Treatment</span> QR entry that keeps working offline, guests the venue approves, and payment straight to the venue's bank. <a class="more" href="https://entrycode.uk">Learn more about EntryCode →</a></p>
+        </div>
         <span class="status dev">In development</span>
       </article>
       <article class="product">
@@ -266,7 +357,10 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; display: f
           <h3>ShiftSense</h3>
           <p class="label tags">Staff scheduling</p>
         </div>
-        <p>Rotas for restaurants and small businesses. ShiftSense suggests how many people you need from the weather and local events, so the schedule fits the day you will actually have. <a class="more" href="https://shiftsense.work">Learn more about ShiftSense →</a></p>
+        <div class="cure">
+          <p><span class="cure-label">Headache</span> Guessing how many staff a Saturday needs, and getting it wrong.</p>
+          <p><span class="cure-label">Treatment</span> Staffing suggestions from the weather, local events and your own history. A manager approves every rota. <a class="more" href="https://shiftsense.work">Learn more about ShiftSense →</a></p>
+        </div>
         <span class="status dev">In development</span>
       </article>
       <article class="product">
@@ -274,60 +368,24 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; display: f
           <h3>BokaPay</h3>
           <p class="label tags">Payments · Invoicing · Booking</p>
         </div>
-        <p>Payments, invoicing and booking for tradespeople and small merchants. Take a bank payment at the till with a QR code, send invoices that get paid by bank transfer or card, and let customers book and pay by WhatsApp or text. UK and Northern Ireland first.</p>
+        <div class="cure">
+          <p><span class="cure-label">Headache</span> Card fees on every sale, and chasing invoices for weeks.</p>
+          <p><span class="cure-label">Treatment</span> Bank payments at the till with a QR code, invoices paid by bank transfer or card, and booking by WhatsApp or text. UK and Northern Ireland first.</p>
+        </div>
         <span class="status dev">In development</span>
       </article>
     </div>
   </section>
 
-  <section id="work-with-us">
-    <div class="sec-head">
-      <p class="label">Work with us</p>
-      <h2>Got an idea? We are open to all of them.</h2>
-      <p>You do not need a finished spec. Tell us what you want to exist and we will work out how to build it.</p>
-    </div>
-    <div class="paths">
-      <div class="path">
-        <p class="label">Path one</p>
-        <h3>Hire us to build it</h3>
-        <p>You have the idea. We design and build the software and hand over something that works.</p>
-        <ul>
-          <li>Web apps and APIs in C#</li>
-          <li>Mobile apps</li>
-          <li>Database design and rescue work</li>
-        </ul>
+  <section id="ideas">
+    <div class="idea-band">
+      <div>
+        <p class="label">Got an idea instead?</p>
+        <h2>Not a headache, but something that should exist?</h2>
       </div>
-      <div class="path">
-        <p class="label">Path two</p>
-        <h3>Partner with us</h3>
-        <p>You have an idea and need a technical partner to make it real. We are willing to go into partnership on the right one.</p>
-        <ul>
-          <li>We build alongside you from the start</li>
-          <li>Terms are agreed case by case</li>
-          <li>Tell us about the idea and we will talk</li>
-        </ul>
-      </div>
-    </div>
-    <p class="open-line">Not sure which path fits? Send us the idea in a few sentences and we will reply with a straight answer.</p>
-  </section>
-
-  <section id="strengths">
-    <div class="sec-head">
-      <p class="label">What we are good at</p>
-      <h2>Three things we do well</h2>
-    </div>
-    <div class="strengths">
-      <div class="strength">
-        <h3>SQL performance and troubleshooting</h3>
-        <p>Slow queries, blocking, deadlocks, bad execution plans and indexes that cost more than they save. We find the cause and fix it.</p>
-      </div>
-      <div class="strength">
-        <h3>C# web applications</h3>
-        <p>Web apps and APIs that are straightforward to run and easy to change, with the database designed alongside the code.</p>
-      </div>
-      <div class="strength">
-        <h3>C# mobile apps</h3>
-        <p>Mobile apps built on the same C# skills as the backend, so one team can take a product from database to phone.</p>
+      <div class="idea-text">
+        <p>We also build apps from scratch: web apps and APIs in C#, mobile apps, and the database behind them. And on the right idea, we're willing to go into partnership and build it alongside you.</p>
+        <p><a class="more" href="#contact">Tell us about it →</a></p>
       </div>
     </div>
   </section>
@@ -375,10 +433,13 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; display: f
       <div class="sec-head" style="margin-bottom:0">
         <p class="label">Contact</p>
         <h2>Got a skeillebank? Tell us about it.</h2>
-        <p>A few sentences is enough. Say what the idea is, who it is for and where you are stuck.</p>
+        <p>Book a free 30-minute call, or just email a few sentences: what isn't working, and what it's costing you in time or money. Got an idea instead? Tell us that too.</p>
       </div>
       <div class="contact-box">
-        <p class="label">Email</p>
+        <p class="label">Free 30-minute call</p>
+        <a class="btn primary call-btn" href="mailto:info@skeillebank.com?subject=Free%2030-minute%20call&amp;body=What%27s%20giving%20you%20a%20headache%3A%0A%0AWhen%20suits%20you%20for%20a%20call%3A%0A">Book a call by email</a>
+        <p class="hint-line">Tell us roughly what the headache is and when suits you. We'll reply to set a time.</p>
+        <p class="label" style="margin-top:10px">Or email</p>
         <p class="email"><a id="email" href="mailto:info@skeillebank.com">info@skeillebank.com</a></p>
         <button class="copy" id="copy" type="button">Copy address</button>
         <p class="hint" id="hint" role="status"></p>
