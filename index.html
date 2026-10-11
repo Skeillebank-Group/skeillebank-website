@@ -125,6 +125,8 @@ section { padding-block: 72px; border-top: 1px solid var(--line); scroll-margin-
 .products { border-top: 1.5px solid var(--fg); }
 .product { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr) auto; gap: 8px 40px; padding-block: 28px; border-bottom: 1px solid var(--line); align-items: start; }
 .product h3 { font-size: 30px; font-weight: 700; }
+.product-name { display: flex; gap: 16px; align-items: center; }
+.product-logo { flex: none; width: 56px; height: 56px; border-radius: 12px; }
 .product .tags { margin-top: 8px; }
 .product p { color: var(--muted); max-width: 36em; }
 .status { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; padding: 5px 10px; border: 1px solid var(--line); border-radius: 3px; color: var(--fg); justify-self: end; }
@@ -342,9 +344,12 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; display: f
     </div>
     <div class="products">
       <article class="product">
-        <div>
-          <h3>EntryCode</h3>
-          <p class="label tags">Ticketing · Door entry</p>
+        <div class="product-name">
+          <img class="product-logo" src="logos/entrycode.svg" width="56" height="56" alt="">
+          <div>
+            <h3>EntryCode</h3>
+            <p class="label tags">Ticketing · Door entry</p>
+          </div>
         </div>
         <div class="cure">
           <p><span class="cure-label">Headache</span> Screenshotted tickets, queues when the wifi drops, and fees on every ticket sold.</p>
@@ -353,9 +358,12 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; display: f
         <span class="status dev">In development</span>
       </article>
       <article class="product">
-        <div>
-          <h3>ShiftSense</h3>
-          <p class="label tags">Staff scheduling</p>
+        <div class="product-name">
+          <img class="product-logo" src="logos/shiftsense.svg" width="56" height="56" alt="">
+          <div>
+            <h3>ShiftSense</h3>
+            <p class="label tags">Staff scheduling</p>
+          </div>
         </div>
         <div class="cure">
           <p><span class="cure-label">Headache</span> Guessing how many staff a Saturday needs, and getting it wrong.</p>
@@ -364,9 +372,12 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; display: f
         <span class="status dev">In development</span>
       </article>
       <article class="product">
-        <div>
-          <h3>BokaPay</h3>
-          <p class="label tags">Payments · Invoicing · Booking</p>
+        <div class="product-name">
+          <img class="product-logo" src="logos/bokapay.svg" width="56" height="56" alt="">
+          <div>
+            <h3>BokaPay</h3>
+            <p class="label tags">Payments · Invoicing · Booking</p>
+          </div>
         </div>
         <div class="cure">
           <p><span class="cure-label">Headache</span> Card fees on every sale, and chasing invoices for weeks.</p>
@@ -375,9 +386,12 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; display: f
         <span class="status dev">In development</span>
       </article>
       <article class="product">
-        <div>
-          <h3>iKveld</h3>
-          <p class="label tags">Date nights · Nights out</p>
+        <div class="product-name">
+          <img class="product-logo" src="logos/ikveld.svg" width="56" height="56" alt="">
+          <div>
+            <h3>iKveld</h3>
+            <p class="label tags">Date nights · Nights out</p>
+          </div>
         </div>
         <div class="cure">
           <p><span class="cure-label">Headache</span> Finding somewhere you both like, within budget, on an evening you're both free, and ending up at the same two places again.</p>
