@@ -257,6 +257,17 @@ footer { display: grid; gap: 18px; justify-content: stretch; }
 }
 @media (max-width: 560px) { .symptoms { grid-template-columns: minmax(0, 1fr); } .diag-list { grid-template-columns: minmax(0, 1fr); gap: 2px; } .diag-list dd { margin-bottom: 8px; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Footer, centred and stacked like every Skeillebank site: wordmark, page links, the family, then the legal line. */
+footer.sfoot { display: grid; justify-items: center; text-align: center; gap: 0; padding-block: 44px 40px; }
+.sfoot .wordmark { justify-content: center; color: var(--fg); }
+.sfoot-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 26px; margin-top: 18px; font-size: 15px; }
+.sfoot-links a { color: var(--muted); text-decoration: none; }
+.sfoot-links a:hover { color: var(--fg); }
+.sfoot .family { width: 100%; justify-content: center; margin: 26px 0 0; padding: 24px 0 0; border-top: 1px solid var(--line); border-bottom: none; }
+.sfoot .family-label { flex-basis: 100%; text-align: center; margin-bottom: 2px; }
+.sfoot-fine { width: 100%; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); display: grid; gap: 6px; font-size: 13.5px; color: var(--muted); }
+.sfoot-fine a { color: inherit; }
 </style>
 </head>
 <body>
@@ -523,17 +534,26 @@ footer { display: grid; gap: 18px; justify-content: stretch; }
     </div>
   </section>
 
-  <footer>
-    <nav class="family" aria-label="Skeillebank products">
-      <span class="family-label label">Made by Skeillebank</span>
-      <a href="https://entrycode.uk"><img src="logos/entrycode.svg" alt="" width="28" height="28">EntryCode</a>
-      <a href="https://skiftora.com"><img src="logos/skiftora.svg" alt="" width="28" height="28">Skiftora</a>
-      <a href="https://bokapay.co.uk"><img src="logos/bokapay.svg" alt="" width="28" height="28">BokaPay</a>
-      <a href="https://ikveld.com"><img src="logos/ikveld.svg" alt="" width="28" height="28">iKveld</a>
+  <footer class="sfoot">
+    <a class="wordmark" href="#top"><img src="logo.webp" alt="" width="38" height="40"><span class="wm">Skeillebank<i>.</i></span></a>
+    <nav class="sfoot-links" aria-label="Footer">
+      <a href="#headaches">Headaches</a>
+      <a href="#how">How it works</a>
+      <a href="#treated">Treated</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="privacy.html">Privacy</a>
     </nav>
-    <div class="foot-row">
-    <span class="foot-brand"><img src="logo.webp" alt="" width="42" height="44"><span>© 2026 Skeillebank Ltd<br><span class="foot-def"><i>skeillebank</i> (Vågåmo dialect): a pounding headache, the kind you feel with every heartbeat</span></span></span>
-    <span>Registered in Northern Ireland, company number NI744153. Registered office: 8 Manse Road, Drumquin, BT78 4SD · <a href="privacy.html">Privacy</a></span>
+    <nav class="family" aria-label="Skeillebank products">
+      <span class="family-label label">Our products</span>
+      <a class="fam" href="https://entrycode.uk"><img src="logos/entrycode.svg" alt="" width="28" height="28">EntryCode</a>
+      <a class="fam" href="https://skiftora.com"><img src="logos/skiftora.svg" alt="" width="28" height="28">Skiftora</a>
+      <a class="fam" href="https://bokapay.co.uk"><img src="logos/bokapay.svg" alt="" width="28" height="28">BokaPay</a>
+      <a class="fam" href="https://ikveld.com"><img src="logos/ikveld.svg" alt="" width="28" height="28">iKveld</a>
+    </nav>
+    <div class="sfoot-fine">
+      <p>Skeillebank Ltd, registered in Northern Ireland, company number NI744153. Registered office: 8 Manse Road, Drumquin, BT78 4SD.</p>
+      <p><i>skeillebank</i> (Vågåmo dialect): a pounding headache, the kind you feel with every heartbeat. © 2026 Skeillebank Ltd</p>
     </div>
   </footer>
 </main>
