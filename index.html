@@ -223,6 +223,26 @@ section { padding-block: 72px; border-top: 1px solid var(--line); scroll-margin-
 
 footer { border-top: 1px solid var(--line); padding-block: 28px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px; color: var(--muted); font-size: 14px; }
 
+/* Layout from the brand voice (voice.md): closing lines, a breathing section, what we leave out, the product family */
+.land { margin-top: 44px; font-family: var(--font-display); font-weight: 600; font-size: clamp(22px, 2.6vw, 28px); line-height: 1.25; max-width: 28em; text-wrap: balance; }
+.land::before { content: ""; display: block; width: 40px; height: 3px; background: var(--star); margin-bottom: 16px; }
+section.breath { padding-block: 104px; }
+.breath p { font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 4.2vw, 46px); line-height: 1.12; letter-spacing: -0.01em; max-width: 19em; text-wrap: balance; }
+.breath p span { color: var(--muted); }
+.without { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; }
+.without li { border-top: 1.5px solid var(--fg); padding-top: 18px; display: grid; gap: 10px; align-content: start; }
+.without h3 { font-size: 22px; font-weight: 700; display: flex; gap: 10px; align-items: baseline; }
+.without h3::before { content: "✕"; color: var(--bad); font-size: 18px; }
+.without p { color: var(--muted); font-size: 16px; }
+footer { display: grid; gap: 18px; justify-content: stretch; }
+.family { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+.family-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; margin-right: 4px; }
+.family a { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: var(--fg); font-weight: 600; font-size: 15px; }
+.family a:hover { color: var(--accent); }
+.family img { width: 28px; height: 28px; border-radius: 7px; display: block; }
+.foot-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px; }
+@media (max-width: 860px) { .without { grid-template-columns: minmax(0, 1fr); gap: 28px; } section.breath { padding-block: 64px; } }
+
 @media (max-width: 860px) {
   .hero { grid-template-columns: minmax(0, 1fr); padding-block: 44px 56px; gap: 36px; }
   .product { grid-template-columns: minmax(0, 1fr); gap: 10px; }
@@ -286,7 +306,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; display: f
     <div class="sec-head">
       <p class="label">Common headaches</p>
       <h2>Sound familiar?</h2>
-      <p>These are the ones we see most. Few of them need expensive new software; most just need someone to look.</p>
+      <p>These are the ones we see most.</p>
     </div>
     <div class="symptoms">
       <div class="symptom">
@@ -314,6 +334,11 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; display: f
         <p>We compare what you pay for with what you actually use, and tell you honestly what you could drop. Sometimes the answer is nothing.</p>
       </div>
     </div>
+    <p class="land">Few of them need something new to buy. Most just need someone to look.</p>
+  </section>
+
+  <section class="breath" aria-label="How headaches start">
+    <p>Software rarely breaks all at once. <span>It slows down a little every year, until month-end takes a morning.</span></p>
   </section>
 
   <section id="how">
@@ -332,9 +357,32 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; display: f
       </li>
       <li>
         <h3>You get a straight answer</h3>
-        <p>Fix what you have, build something small, switch to something cheaper, or leave it alone. If it isn't worth doing, we'll say so.</p>
+        <p>Fix what you have, build something small, switch to something cheaper, or leave it alone.</p>
       </li>
     </ol>
+    <p class="land">If it isn't worth doing, we'll say so.</p>
+  </section>
+
+  <section id="without">
+    <div class="sec-head">
+      <p class="label">What we leave out</p>
+      <h2>What you won't get from us</h2>
+    </div>
+    <ul class="without">
+      <li>
+        <h3>A sales pitch</h3>
+        <p>If what you have can be fixed, we'll fix it rather than sell you something new.</p>
+      </li>
+      <li>
+        <h3>A report nobody reads</h3>
+        <p>You get the cause, the fix and what it costs, in plain words, on a page or two.</p>
+      </li>
+      <li>
+        <h3>A contract longer than the fix</h3>
+        <p>A small fix is quoted as a small fix.</p>
+      </li>
+    </ul>
+    <p class="land">Just the cause, the fix, and what it costs.</p>
   </section>
 
   <section id="treated">
@@ -401,6 +449,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; display: f
         <span class="status dev">In development</span>
       </article>
     </div>
+    <p class="land">Different headaches, one habit: find the cause, then fix only that.</p>
   </section>
 
   <section id="ideas">
@@ -452,6 +501,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; display: f
         </ul>
       </div>
     </div>
+    <p class="land">Twenty years of finding out where the time goes.</p>
   </section>
 
   <section id="contact">
@@ -474,8 +524,17 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; display: f
   </section>
 
   <footer>
+    <nav class="family" aria-label="Skeillebank products">
+      <span class="family-label label">Made by Skeillebank</span>
+      <a href="https://entrycode.uk"><img src="logos/entrycode.svg" alt="" width="28" height="28">EntryCode</a>
+      <a href="https://skiftora.com"><img src="logos/skiftora.svg" alt="" width="28" height="28">Skiftora</a>
+      <a href="https://bokapay.co.uk"><img src="logos/bokapay.svg" alt="" width="28" height="28">BokaPay</a>
+      <a href="https://ikveld.com"><img src="logos/ikveld.svg" alt="" width="28" height="28">iKveld</a>
+    </nav>
+    <div class="foot-row">
     <span class="foot-brand"><img src="logo.webp" alt="" width="42" height="44"><span>© 2026 Skeillebank Ltd<br><span class="foot-def"><i>skeillebank</i> (Vågåmo dialect): a pounding headache, the kind you feel with every heartbeat</span></span></span>
     <span>Registered in Northern Ireland, company number NI744153. Registered office: 8 Manse Road, Drumquin, BT78 4SD · <a href="privacy.html">Privacy</a></span>
+    </div>
   </footer>
 </main>
 
