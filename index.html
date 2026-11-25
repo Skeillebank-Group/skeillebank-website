@@ -98,6 +98,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+html, body { overflow-x: clip; }
 body {
   background: var(--bg);
   color: var(--fg);
@@ -114,10 +115,8 @@ a { color: inherit; }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 
 .label {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
   color: var(--muted);
 }
 
@@ -156,9 +155,10 @@ a { color: inherit; }
 .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
 .btn.primary:hover { filter: brightness(1.08); }
 .btn.ghost:hover { background: var(--surface); }
+.btn:active, .copy:active { transform: translateY(1px); }
 
 .plan { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; font-family: var(--font-mono); font-size: 13px; overflow: hidden; }
-.plan-head { display: flex; justify-content: space-between; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; }
+.plan-head { display: flex; justify-content: space-between; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 13px; }
 .plan pre { margin: 0; padding: 16px; overflow-x: auto; line-height: 1.7; color: var(--fg); }
 .plan .kw { color: var(--slate); font-weight: 500; }
 .plan .cm { color: var(--muted); }
@@ -186,13 +186,14 @@ section { padding-block: 72px; border-top: 1px solid var(--line); scroll-margin-
 .product-name { display: flex; gap: 18px; align-items: center; }
 .product-logo { flex: none; width: 76px; height: 76px; border-radius: 17px; }
 /* Two-colour product names, matching each logo: EntryCode ink + brass, Skiftora teal + amber, BokaPay orange + green. */
-.wm-b.ec { color: #b08d3e; }
-.wm-a.sk { color: #1e7268; } .wm-b.sk { color: #c9862a; }
-.wm-a.bp { color: #b7791f; } .wm-b.bp { color: #0f7b5f; }
+/* EntryCode's own --brass-dark and a deeper Skiftora amber: the logo shades are under 3:1 as text on this background. */
+.wm-b.ec { color: #8f7130; }
+.wm-a.sk { color: #1e7268; } .wm-b.sk { color: #a36a1a; }
+.wm-a.bp { color: #9a6418; } .wm-b.bp { color: #0f7b5f; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .wm-a.sk { color: var(--fg); } :root:not([data-theme="light"]) .wm-b.sk { color: #ffc870; } :root:not([data-theme="light"]) .wm-a.bp { color: #f4b942; } :root:not([data-theme="light"]) .wm-b.bp { color: #3fc79c; } :root:not([data-theme="light"]) .wm-b.ec { color: #d4b06a; } }
 .product .tags { margin-top: 8px; }
 .product p { color: var(--muted); max-width: 36em; }
-.status { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; padding: 5px 10px; border: 1px solid var(--line); border-radius: 3px; color: var(--fg); justify-self: end; }
+.status { font-size: 14px; font-weight: 500; white-space: nowrap; padding: 5px 10px; border: 1px solid var(--line); border-radius: 3px; color: var(--fg); justify-self: end; }
 .status.dev { border-color: var(--slate); color: var(--slate); }
 .product.later h3, .product.later p { opacity: 0.72; }
 .more { display: inline-block; margin-top: 10px; color: var(--accent); font-weight: 600; text-underline-offset: 3px; }
@@ -216,7 +217,7 @@ section { padding-block: 72px; border-top: 1px solid var(--line); scroll-margin-
 
 /* diagnosis card (hero) */
 .diag-list { margin: 0; padding: 16px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px 18px; font-size: 13px; line-height: 1.55; }
-.diag-list dt { color: var(--muted); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; padding-top: 1px; }
+.diag-list dt { color: var(--muted); font-weight: 600; }
 .diag-list dd { margin: 0; color: var(--fg); }
 .diag-list dd.good { color: var(--good); font-weight: 500; }
 
@@ -236,11 +237,11 @@ section { padding-block: 72px; border-top: 1px solid var(--line); scroll-margin-
 /* treated (products) */
 .cure { display: grid; gap: 8px; }
 .cure p { color: var(--muted); max-width: 36em; }
-.cure-label { display: inline-block; min-width: 86px; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg); }
+.cure-label { font-weight: 600; color: var(--fg); }
 
 /* got an idea instead */
 .idea-band { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: start; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 32px; }
-.idea-band h2 { font-size: clamp(24px, 3.2vw, 30px); font-weight: 700; margin-top: 10px; }
+.idea-band h2 { font-size: clamp(24px, 3.2vw, 30px); font-weight: 700; }
 .idea-text { display: grid; gap: 12px; color: var(--muted); }
 
 /* contact call button */
@@ -273,7 +274,7 @@ section { padding-block: 72px; border-top: 1px solid var(--line); scroll-margin-
 .name-note .logo-figure { grid-area: fig; }
 .name-note .def { display: grid; gap: 8px; }
 .about-bio .name-note p { color: var(--fg); }
-.name-note .def-word { font-family: var(--font-mono); font-size: 18px; }
+.name-note .def-word { font-family: var(--font-display); font-size: 20px; }
 .name-note .def-meta { display: inline-block; font-size: 13px; color: var(--muted); margin-left: 8px; }
 .logo-figure { margin: 0; width: 190px; display: grid; gap: 10px; }
 .logo-figure img { width: 190px; height: auto; display: block; }
@@ -308,7 +309,8 @@ section.breath { padding-block: 104px; }
 .without p { color: var(--muted); font-size: 16px; }
 footer { display: grid; gap: 18px; justify-content: stretch; }
 .family { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
-.family-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; margin-right: 4px; }
+.family-label { margin-right: 4px; }
+.tools-head { font-size: 20px; font-weight: 700; }
 .family a { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: var(--fg); font-weight: 600; font-size: 15px; }
 .family a:hover { color: var(--accent); }
 .family img { width: 28px; height: 28px; border-radius: 7px; display: block; }
@@ -360,9 +362,8 @@ footer.sfoot { display: grid; justify-items: center; text-align: center; gap: 0;
 <main class="wrap" id="top">
   <div class="hero">
     <div>
-      <p class="label">Skeillebank Ltd · Northern Ireland · We fix business headaches</p>
-      <h1 style="margin-top:14px">What's giving your business a headache?</h1>
-      <p class="lead">Every business has one: the report that takes all morning, the spreadsheet only one person dares to touch, the software you pay for and half use. Tell us what's giving you a headache. We'll find the cause and give you a straight answer, including whether you're paying more than you need to.</p>
+      <h1>What's giving your business a headache?</h1>
+      <p class="lead">The report that takes all morning, the spreadsheet only one person dares to touch, the software you pay for and half use. We find the cause and tell you straight what it takes to fix, and if you're paying too much.</p>
       <div class="cta-row">
         <a class="btn primary" href="mailto:info@skeillebank.com?subject=Free%2030-minute%20call">Book a free 30-minute call</a>
         <a class="btn ghost" href="#contact">Or email us</a>
@@ -387,34 +388,33 @@ footer.sfoot { display: grid; justify-items: center; text-align: center; gap: 0;
 
   <section id="headaches">
     <div class="sec-head">
-      <p class="label">Common headaches</p>
       <h2>Sound familiar?</h2>
       <p>These are the ones we see most.</p>
     </div>
     <div class="symptoms">
       <div class="symptom">
         <h3>“Reports take all morning.”</h3>
-        <p>It's rarely the people. It's usually the database, and it can often be fixed without changing anything your team sees.</p>
+        <p>It's rarely the people. It's usually the database.</p>
       </div>
       <div class="symptom">
         <h3>“The system crawls every month-end.”</h3>
-        <p>Something is queuing behind something else: a slow query, a missing index, two jobs waiting on each other. We find it and move it out of the way.</p>
+        <p>Something is queuing behind something else. We find it and move it.</p>
       </div>
       <div class="symptom">
         <h3>“We pay for tools that don't talk to each other.”</h3>
-        <p>So someone types the same order in twice. We connect them so it's entered once, or replace several with one that fits.</p>
+        <p>So someone types the same order in twice. We connect them so it's typed once.</p>
       </div>
       <div class="symptom">
         <h3>“Only one person understands the spreadsheet.”</h3>
-        <p>Until they go on holiday. We turn it into a simple app the whole team can use, one that survives someone sorting the wrong column.</p>
+        <p>Until they go on holiday. We turn it into an app the whole team can use.</p>
       </div>
       <div class="symptom">
         <h3>“Card fees eat into every sale.”</h3>
-        <p>Every tap takes a slice. For many small businesses, bank-to-bank payments by QR code cost less.</p>
+        <p>Every tap takes a slice. Bank payments by QR code often cost less.</p>
       </div>
       <div class="symptom">
         <h3>“Are we overpaying for software?”</h3>
-        <p>We compare what you pay for with what you actually use, and tell you honestly what you could drop. Sometimes the answer is nothing.</p>
+        <p>We compare what you pay for with what you use. Sometimes the answer is nothing.</p>
       </div>
     </div>
     <p class="land">Few of them need something new to buy. Most just need someone to look.</p>
@@ -426,7 +426,6 @@ footer.sfoot { display: grid; justify-items: center; text-align: center; gap: 0;
 
   <section id="how">
     <div class="sec-head">
-      <p class="label">How it works</p>
       <h2>From headache to a straight answer</h2>
     </div>
     <ol class="steps">
@@ -448,7 +447,6 @@ footer.sfoot { display: grid; justify-items: center; text-align: center; gap: 0;
 
   <section id="without">
     <div class="sec-head">
-      <p class="label">What we leave out</p>
       <h2>What you won't get from us</h2>
     </div>
     <ul class="without">
@@ -470,7 +468,6 @@ footer.sfoot { display: grid; justify-items: center; text-align: center; gap: 0;
 
   <section id="treated">
     <div class="sec-head">
-      <p class="label">Headaches we've already treated</p>
       <h2>Our own products started as headaches</h2>
       <p>Each began as somebody's headache: a club door, a Saturday rota, a card machine, a night out. Together they show the kind of fix we build.</p>
     </div>
@@ -484,8 +481,8 @@ footer.sfoot { display: grid; justify-items: center; text-align: center; gap: 0;
           </div>
         </div>
         <div class="cure">
-          <p><span class="cure-label">Headache</span> Tickets screenshotted and passed around, queues when the wifi drops, and a fee on every ticket sold.</p>
-          <p><span class="cure-label">Treatment</span> QR entry that keeps working offline, guests the venue approves, and payment straight to the venue's bank. <a class="more" href="https://entrycode.uk">Learn more about EntryCode →</a> <a class="more" href="https://entrycode.uk/demo">Try the demo →</a></p>
+          <p><span class="cure-label">Headache:</span> Tickets screenshotted and passed around, queues when the wifi drops, and a fee on every ticket sold.</p>
+          <p><span class="cure-label">Treatment:</span> QR entry that keeps working offline, guests the venue approves, and payment straight to the venue's bank. <a class="more" href="https://entrycode.uk">Learn more about EntryCode</a> <a class="more" href="https://entrycode.uk/demo">Try the demo</a></p>
         </div>
         <span class="status dev">In development</span>
       </article>
@@ -498,8 +495,8 @@ footer.sfoot { display: grid; justify-items: center; text-align: center; gap: 0;
           </div>
         </div>
         <div class="cure">
-          <p><span class="cure-label">Headache</span> Guessing how many staff a Saturday needs, and finding out at 20:00 that you guessed wrong.</p>
-          <p><span class="cure-label">Treatment</span> Staffing suggestions from the weather, local events and your own history. A manager approves every rota. <a class="more" href="https://skiftora.com">Learn more about Skiftora →</a></p>
+          <p><span class="cure-label">Headache:</span> Guessing how many staff a Saturday needs, and finding out at 20:00 that you guessed wrong.</p>
+          <p><span class="cure-label">Treatment:</span> Staffing suggestions from the weather, local events and your own history. A manager approves every rota. <a class="more" href="https://skiftora.com">Learn more about Skiftora</a></p>
         </div>
         <span class="status dev">In development</span>
       </article>
@@ -512,8 +509,8 @@ footer.sfoot { display: grid; justify-items: center; text-align: center; gap: 0;
           </div>
         </div>
         <div class="cure">
-          <p><span class="cure-label">Headache</span> A card fee on every sale, and invoices chased for weeks.</p>
-          <p><span class="cure-label">Treatment</span> Get paid on the job: show a QR code or send a payment link, and the customer pays by bank or card on their own phone, straight to your account. Invoices and booking by WhatsApp are coming soon. Northern Ireland first. <a class="more" href="https://bokapay.co.uk">Learn more about BokaPay →</a></p>
+          <p><span class="cure-label">Headache:</span> A card fee on every sale, and invoices chased for weeks.</p>
+          <p><span class="cure-label">Treatment:</span> Get paid on the job: the customer scans a QR code or opens a link and pays by bank or card, straight to your account. <a class="more" href="https://bokapay.co.uk">Learn more about BokaPay</a></p>
         </div>
         <span class="status dev">In development</span>
       </article>
@@ -526,8 +523,8 @@ footer.sfoot { display: grid; justify-items: center; text-align: center; gap: 0;
           </div>
         </div>
         <div class="cure">
-          <p><span class="cure-label">Headache</span> Finding somewhere you both like, within budget, on an evening you're both free, and ending up at the same two places again.</p>
-          <p><span class="cure-label">Treatment</span> Say what you want in one line and get two or three complete plans: where to go, why it suits you both, when to leave, and a backup if it rains. Friends can vote on a night out too. Northern Ireland first, starting in Omagh, Enniskillen, Derry and Strabane. <a class="more" href="https://ikveld.com">Learn more about iKveld →</a></p>
+          <p><span class="cure-label">Headache:</span> Finding somewhere you both like, within budget, on an evening you're both free, and ending up at the same two places again.</p>
+          <p><span class="cure-label">Treatment:</span> Say what you want in one line and get two or three complete plans, with a backup if it rains. Starting in Omagh, Enniskillen, Derry and Strabane. <a class="more" href="https://ikveld.com">Learn more about iKveld</a></p>
         </div>
         <span class="status dev">In development</span>
       </article>
@@ -538,19 +535,17 @@ footer.sfoot { display: grid; justify-items: center; text-align: center; gap: 0;
   <section id="ideas">
     <div class="idea-band">
       <div>
-        <p class="label">Got an idea instead?</p>
         <h2>Not a headache, but something that should exist?</h2>
       </div>
       <div class="idea-text">
         <p>We also build from scratch: web apps and APIs in C#, mobile apps, and the database underneath. And if the idea is right, we'll go into partnership and build it with you.</p>
-        <p><a class="more" href="#contact">Tell us about it →</a></p>
+        <p><a class="more" href="#contact">Tell us about it</a></p>
       </div>
     </div>
   </section>
 
   <section id="about">
     <div class="sec-head">
-      <p class="label">Experience and tools</p>
       <h2>Twenty years of SQL Server and .NET</h2>
     </div>
     <div class="about">
@@ -558,7 +553,7 @@ footer.sfoot { display: grid; justify-items: center; text-align: center; gap: 0;
         <p>Skeillebank was founded by Ivar Myrum Hagen, a database and .NET developer with more than 20 years of experience building and tuning SQL Server systems for fund administration, retail marketing and gaming.</p>
       </div>
       <div class="name-note">
-          <p class="def-word"><b>skeillebank</b> <span class="def-meta"><i>SKAY-luh-bank</i> · noun · dialect from Vågåmo, Norway</span></p>
+          <p class="def-word"><b>skeillebank</b> <span class="def-meta">(<i>SKAY-luh-bank</i>), a noun from the dialect of Vågåmo, Norway</span></p>
           <div class="def">
             <p>A pounding headache, the kind you feel with every heartbeat.</p>
             <p><i>Common causes:</i> slow queries, deadlocks, spreadsheets doing an app's job, “is there an app for this?” and “what am I looking at?”<br><i>Treatment:</i> Skeillebank.</p>
@@ -569,27 +564,27 @@ footer.sfoot { display: grid; justify-items: center; text-align: center; gap: 0;
         </div>
     </div>
     <div class="about-facts tools">
-      <p class="label">Tools we use</p>
+      <h3 class="tools-head">Tools we use</h3>
       <div class="tool-groups">
           <div class="tool-group">
             <h3>Data</h3>
             <ul class="stack"><li>SQL Server</li><li>T-SQL</li><li>SSIS</li><li>SSRS</li><li>Entity Framework Core</li><li>tSQLt</li></ul>
-            <p>Where most headaches start, so it&#39;s where we look first: query plans, indexes, blocking and the jobs behind month-end. We write and tune the T-SQL ourselves, and test it with tSQLt, so a fix stays fixed.</p>
+            <p>Where most headaches start, so we look there first. Fixes are tested, so they stay fixed.</p>
           </div>
           <div class="tool-group">
             <h3>Applications</h3>
             <ul class="stack"><li>C#</li><li>.NET</li><li>ASP.NET Core</li><li>Blazor</li><li>.NET MAUI</li><li>SignalR</li></ul>
-            <p>Web apps, APIs, and phone apps for Android and iPhone, with screens that update live when something changes.</p>
+            <p>Web apps, APIs, and phone apps for Android and iPhone.</p>
           </div>
           <div class="tool-group">
             <h3>Cloud and automation</h3>
             <ul class="stack"><li>Azure</li><li>Azure Monitor</li><li>Hangfire</li><li>PowerShell</li><li>Git</li><li>GitHub Actions</li></ul>
-            <p>Hosting, deployments, scheduled jobs, PowerShell scripts for the repetitive work nobody should do by hand, and monitoring that flags a failed job before anyone else notices. Every change is built and checked automatically, including security scans with CodeQL and OWASP ZAP.</p>
+            <p>Monitoring that flags a failed job before anyone notices, and CodeQL and OWASP ZAP scans on every change.</p>
           </div>
           <div class="tool-group">
             <h3>Built into our products</h3>
             <ul class="stack"><li>Stripe</li><li>Microsoft Entra ID</li><li>Firebase</li><li>Azure Communication Services</li><li>Claude API</li></ul>
-            <p>Payments, sign-in, push notifications, email and AI, already working in the products we run ourselves.</p>
+            <p>Already working in the products we run ourselves.</p>
           </div>
       </div>
     </div>
@@ -599,9 +594,8 @@ footer.sfoot { display: grid; justify-items: center; text-align: center; gap: 0;
   <section id="contact">
     <div class="contact">
       <div class="sec-head" style="margin-bottom:0">
-        <p class="label">Contact</p>
         <h2>Got a skeillebank? Tell us about it.</h2>
-        <p>Book a free 30-minute call, or just email a few sentences: what isn't working, and what it's costing you in time or money. Got an idea instead? We'd like to hear that too.</p>
+        <p>Book a free 30-minute call, or just email a few sentences: what isn't working, and what it's costing you in time or money.</p>
       </div>
       <div class="contact-box">
         <p class="label">Free 30-minute call</p>
